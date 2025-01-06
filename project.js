@@ -1,7 +1,3 @@
-// function deposit() {
-//   return 1;
-// }
-
 const propmt = require("prompt-sync")();
 
 const deposit = () => {
@@ -32,11 +28,11 @@ const getNumbersOfLines = () => {
   }
 };
 
-const getbet = (balance) => {
+const getbet = (balance, lines) => {
   while (true) {
-    const bet = propmt("Enter the total bet: ");
+    const bet = propmt("Enter the bet per line: ");
     const numberbet = parseInt(bet);
-    if (isNaN(numberbet) || numberbet <= 0 || numberbet > balance) {
+    if (isNaN(numberbet) || numberbet <= 0 || numberbet > balance / lines) {
       console.log("Invalid bet,Try again");
     } else {
       return numberbet;
@@ -46,4 +42,4 @@ const getbet = (balance) => {
 
 let balance = deposit();
 const numberOfLines = getNumbersOfLines();
-const bet = getbet(balance);
+const bet = getbet(balance, numberOfLines);
